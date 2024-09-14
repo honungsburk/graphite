@@ -6,6 +6,10 @@ The knowledge graph editor.
 
 Graphite is a tool for creating and editing knowledge graphs. It is designed to be simple and easy to use, while still providing powerful features for advanced users.
 
+## Debug View
+
+press `F12` to open the debug view.
+
 ## Wishlist
 
 - Create and edit nodes and edges
