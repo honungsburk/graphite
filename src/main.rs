@@ -23,7 +23,7 @@ impl Sandbox for Counter {
     }
 
     fn title(&self) -> String {
-        String::from("Counter - Iced")
+        String::from("Graphite")
     }
 
     fn update(&mut self, message: Message) {
