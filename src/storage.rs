@@ -33,8 +33,8 @@ enum Event {
 }
 
 struct Envelope {
-    logical_timestamp: u64, // Logical timestamp
-    event_type: Event,      // The type of event
+    hlc: u64,          // Logical timestamp
+    event_type: Event, // The type of event
     actor: Uuid, // The actor who performed the event, e.g. a user. should be present amoung the entities
     version: u64, // Envelope version
 }

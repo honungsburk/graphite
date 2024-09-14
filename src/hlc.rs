@@ -1,6 +1,31 @@
 //! An implementation of the
 //! [Hybrid Logical Clock](http://www.cse.buffalo.edu/tech-reports/2014-04.pdf)
 //! for Rust.
+//
+//! This is a modified version of the original implementation by tbg, which can
+//! be found [here](https://github.com/tbg/hlc-rs).
+//!
+//! Copyright Notice
+//!
+//! Copyright (c) 2015 The hlc-rs Developers
+//
+//! Permission is hereby granted, free of charge, to any person obtaining a copy
+//! of this software and associated documentation files (the "Software"), to deal
+//! in the Software without restriction, including without limitation the rights
+//! to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//! copies of the Software, and to permit persons to whom the Software is
+//! furnished to do so, subject to the following conditions:
+//!
+//! The above copyright notice and this permission notice shall be included in all
+//! copies or substantial portions of the Software.
+//!
+//! THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//! IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//! FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//! AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//! LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//! OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//! SOFTWARE.
 
 use time;
 
@@ -17,7 +42,7 @@ use std::sync::Mutex;
 /// # Examples
 ///
 /// ```
-/// use hlc::HLTimestamp;
+/// use graphite::hlc::HLTimestamp;
 /// let early = HLTimestamp::new(0, 0);
 /// let middle = HLTimestamp::new(1, 0);
 /// let late = HLTimestamp::new(1, 1);
@@ -36,7 +61,7 @@ impl HLTimestamp {
     /// # Examples
     ///
     /// ```
-    /// use hlc::HLTimestamp;
+    /// use graphite::hlc::HLTimestamp;
     /// let ts = HLTimestamp::new(1, 2);
     /// assert_eq!(format!("{}", ts), "1+2");
     /// ```
@@ -59,7 +84,7 @@ impl Display for HLTimestamp {
 /// # Examples
 ///
 /// ```
-/// use hlc::{HLTimestamp, State};
+/// use graphite::hlc::{HLTimestamp, State};
 /// let mut s = State::new();
 /// println!("{}", s.get_time()); // attach to outgoing event
 /// let ext_event_ts = HLTimestamp::new(12345, 89); // external event's timestamp
@@ -70,7 +95,7 @@ impl Display for HLTimestamp {
 /// a `State` wrapped in a `Mutex`:
 ///
 /// ```
-/// use hlc::State;
+/// use graphite::hlc::State;
 /// let mut mu = State::new_sendable();
 /// {
 ///     let mut s = mu.lock().unwrap();
@@ -103,8 +128,8 @@ impl<F: FnMut() -> i64> State<F> {
     ///
     /// ```
     /// # fn main() {
-    /// use hlc::{HLTimestamp, State};
-    /// let mut times = vec![42, 43, 44];
+    /// use graphite::hlc::{HLTimestamp, State};
+    /// let mut times = vec![42];
     /// let mut s = State::new_with(move || times.pop().unwrap());
     /// let mut ts = s.get_time();
     /// assert_eq!(format!("{}", ts), "42+0");
