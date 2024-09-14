@@ -1,6 +1,6 @@
 [package]
-name = "iced-counter"
-description = "Simple counter app using Iced"
+name = "graphite"
+description = "The knowledge graph editor"
 version = "0.1.0"
 edition = "2021"
 
