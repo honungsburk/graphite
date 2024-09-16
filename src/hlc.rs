@@ -71,6 +71,28 @@ impl HLTimestamp {
             logical: l,
         }
     }
+
+    /// Returns the seconds time of the timestamp.
+    /// # Examples
+    /// ```
+    /// use graphite::hlc::HLTimestamp;
+    /// let ts = HLTimestamp::new(1, 2);
+    /// assert_eq!(ts.seconds(), 1);
+    /// ```
+    pub fn seconds(&self) -> i64 {
+        self.seconds
+    }
+
+    /// Returns the logical component of the timestamp.
+    /// # Examples
+    /// ```
+    /// use graphite::hlc::HLTimestamp;
+    /// let ts = HLTimestamp::new(1, 2);
+    /// assert_eq!(ts.logical(), 2);
+    /// ```
+    pub fn logical(&self) -> u16 {
+        self.logical
+    }
 }
 
 impl Display for HLTimestamp {
