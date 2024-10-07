@@ -1,4 +1,4 @@
-use iced::{executor, widget::text, Application, Command, Element, Theme};
+use iced::{executor, widget::text, window, Application, Command, Element, Theme};
 
 pub struct Editor;
 
@@ -12,7 +12,10 @@ impl Application for Editor {
     type Flags = ();
 
     fn new(_flags: Self::Flags) -> (Self, Command<Message>) {
-        (Self, Command::none())
+        (
+            Self,
+            window::change_mode(window::Id::MAIN, iced::window::Mode::Fullscreen),
+        )
     }
 
     fn title(&self) -> String {
@@ -30,4 +33,9 @@ impl Application for Editor {
     fn theme(&self) -> iced::Theme {
         iced::Theme::Dark
     }
+}
+
+struct Person {
+    full_name: String,
+    age: u8,
 }

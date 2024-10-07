@@ -137,7 +137,7 @@ impl EventStorage {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum DataTypes {
+pub enum Datum {
     String(String),
     Integer(i64),
     Float(f64),
@@ -154,7 +154,7 @@ pub enum Action {
     AddFact {
         subject: Uuid,
         predicate: String,
-        datum: DataTypes,
+        datum: Datum,
     },
     RemoveFact {
         subject: Uuid,

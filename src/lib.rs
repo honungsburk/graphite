@@ -1,3 +1,2 @@
 pub mod editor;
-pub mod hlc;
-pub mod storage;
+pub mod legacy;
